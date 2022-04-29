@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: c8XAjQCHA?PdVzct
+      MYSQL_DATABASE: learningpath
+      MYSQL_USER: mash
+      MYSQL_PASSWORD: mash
+    ports:
+      - "3306:3306"
+volumes:
+  db_data:
