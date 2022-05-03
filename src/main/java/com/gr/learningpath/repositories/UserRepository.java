@@ -20,13 +20,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByUsername(@Nonnull final String username);
 
-    @Query("SELECT m FROM User m where m.isMentor = true")
-    Optional<List<User>> fetchMentors();
+    List<User> findAllByIsMentorIsTrue();
 
     @Query("SELECT user FROM User user " +
             "JOIN Course c ON c.user.id = user.id " +
             "JOIN CoursePublication cp on c.id = cp.course.id " +
             "WHERE c.departmentCourse.id = ?1")
-    Optional<List<User>> fetchMentorsByCourse(Long courseId);
+    List<User> fetchMentorsByCourse(Long courseId);
 
 }

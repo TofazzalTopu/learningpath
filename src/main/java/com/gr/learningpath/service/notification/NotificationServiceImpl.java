@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,10 +26,7 @@ public class NotificationServiceImpl implements NotificationService {
     @Transactional
     @Override
     public List<Notification> fetchNotifications(Long userId){
-        Optional<List<Notification>> notificationsByUser = notificationRepository.findAllByToUser(userId, NotificationStatus.SENT);
-        if (notificationsByUser.isEmpty()) return null;
-
-        List<Notification> notifications = notificationsByUser.get();
+        List<Notification> notifications = notificationRepository.findAllByToUserAndStatus(userId, NotificationStatus.SENT);
         for (Notification notification: notifications) {
             notification.setStatus(NotificationStatus.READ);
             notificationRepository.save(notification);

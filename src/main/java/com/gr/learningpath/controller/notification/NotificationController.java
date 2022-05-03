@@ -59,7 +59,7 @@ public class NotificationController {
      */
 
 //    http://localhost:3000/some-action/user2?access_token=01a615c7-bc39-4925-9109-643fcd27e43e
-    @RequestMapping(value = "/notify", method = RequestMethod.POST)
+    @PostMapping(value = "/notify")
     @ResponseBody
     public ResponseEntity<?> someAction(@RequestBody NotificationRequest notificationRequest) {
 

@@ -161,12 +161,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findConnections(@Nonnull final Long userId) {
-        final Optional<List<Follow>> connections = followRepository.findAllByFromUser(userId);
-
+        final List<Follow> connections = followRepository.findAllByFromUserId(userId);
         List<User> connectionsList = new ArrayList<>();
-
         if (!connections.isEmpty()) {
-            final List<Long> toUsersIds = connections.get().stream().map(s -> s.getToUser())
+            final List<Long> toUsersIds = connections.stream().map(Follow::getToUser)
                     .collect(Collectors.toList());
             connectionsList = userRepository.findAllById(toUsersIds);
         }
@@ -187,23 +185,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getMentors(){
 
-        Optional<List<User>> mentors = userRepository.fetchMentors();
-
-        if (!mentors.isEmpty()) {
-            return mentors.get();
-        }
-        return null;
+        return userRepository.findAllByIsMentorIsTrue();
     }
 
     @Override
     public List<User> getMentorsByCourse(Long courseId){
-
-        Optional<List<User>> mentors = userRepository.fetchMentorsByCourse(courseId);
-
-        if (!mentors.isEmpty()) {
-            return mentors.get();
-        }
-        return null;
+        return userRepository.fetchMentorsByCourse(courseId);
     }
 
     @Override
