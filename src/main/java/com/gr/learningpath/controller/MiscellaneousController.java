@@ -19,6 +19,7 @@ import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor

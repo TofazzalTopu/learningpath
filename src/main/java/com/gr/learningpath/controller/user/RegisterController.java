@@ -6,13 +6,11 @@ import com.gr.learningpath.facade.user.UserFacade;
 import com.gr.learningpath.service.SecuritySupport;
 import com.gr.learningpath.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Nonnull;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/register")
 @RequiredArgsConstructor

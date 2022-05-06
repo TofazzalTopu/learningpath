@@ -17,6 +17,7 @@ import java.io.IOException;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/course/course-content")
 @RequiredArgsConstructor
