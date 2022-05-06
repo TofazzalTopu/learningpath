@@ -13,8 +13,8 @@ public class AppConstants {
     public static final String JWT_SECRET = "SECUREOFFNOSECURITYSECUREOFFNOSECURITYSECUREOFFNOSECURITYSECUREOFFNOSECURITYSECUREOFFNOSECURITYSECUREOFFNOSECURITY";
     public static final String HEADER = "Authorization";
     public static final String PREFIX = "Bearer ";
-    public static final String LOGIN_PATH = "/api/v1/users/login";
-    public static final String REGISTRATION_PATH = "/api/v1/users";
+    public static final String LOGIN_PATH = "/api/login";
+    public static final String REGISTRATION_PATH = "/api/register";
     public static final String[] AUTH_WHITELIST = {
             "/v2/api-docs",
             "/v2/api-docs",
