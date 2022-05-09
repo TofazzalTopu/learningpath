@@ -1,6 +1,5 @@
 package com.gr.learningpath.config.secuirty;
 
-import com.gr.learningpath.constant.AppConstants;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,9 +89,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api/**").authenticated()
 				.and()
 				.httpBasic();
+		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
 //				.and()
 //				.apply(securityConfigurerAdapter());
-		httpSecurity.csrf().disable()
+		/*httpSecurity.csrf().disable()
 				.authorizeRequests()
 				.antMatchers(AppConstants.AUTH_WHITELIST).permitAll()
 				.anyRequest()
@@ -111,7 +112,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
+*/
 		// Add a filter to validate the tokens with every request
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
