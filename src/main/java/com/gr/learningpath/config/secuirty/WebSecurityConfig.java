@@ -90,55 +90,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.httpBasic();
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
-//				.and()
-//				.apply(securityConfigurerAdapter());
-		/*httpSecurity.csrf().disable()
-				.authorizeRequests()
-				.antMatchers(AppConstants.AUTH_WHITELIST).permitAll()
-				.anyRequest()
-				.permitAll()
-				.and()
-				.formLogin()
-				.permitAll()
-				.and()
-				.logout()
-				.invalidateHttpSession(true)
-				.deleteCookies()
-				.and()
-				// make sure we use stateless session; session won't be used to
-				// store user's state.
-				.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
-				.and()
-				.sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-*/
-		// Add a filter to validate the tokens with every request
-		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
-//		httpSecurity.csrf().disable()
-//				.authorizeRequests()
-//				.antMatchers(AppConstants.AUTH_WHITELIST).permitAll()
-//				.anyRequest()
-//				.permitAll()
-//				.and()
-//				.formLogin()
-//				.permitAll()
-//				.and()
-//				.logout()
-//				.invalidateHttpSession(true)
-//				.deleteCookies()
-//				.and()
-//				// make sure we use stateless session; session won't be used to
-//				// store user's state.
-//				.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
-//				.and()
-//				.sessionManagement()
-//				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//
-//		// Add a filter to validate the tokens with every request
-//		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
 	}
 
 }
