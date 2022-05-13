@@ -13,6 +13,7 @@ import com.gr.learningpath.security.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +44,13 @@ public class NotificationController {
         this.userRepository = userRepository;
     }
 
+    @GetMapping("/example-notifications")
+    public String exampleNotifications() {
+        messagingTemplate.convertAndSend("/example-notifications",
+                "Welcome - websocket connected successfully."
+        );
+        return "Welcome - websocket connected successfully.";
+    }
 
     /**
      * GET  /notifications  -> show the notifications page.
@@ -60,6 +68,7 @@ public class NotificationController {
      */
 
 //    http://localhost:3000/some-action/user2?access_token=01a615c7-bc39-4925-9109-643fcd27e43e
+    @MessageMapping("/push-message-mapping")
     @PostMapping(value = "/notify")
     @ResponseBody
     public ResponseEntity<?> someAction(@RequestBody NotificationRequest notificationRequest) {
