@@ -21,7 +21,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(final StompEndpointRegistry registry) {
-        registry.addEndpoint("/push-message-mapping").setAllowedOrigins().withSockJS();
+        registry.addEndpoint("/push-message-mapping").setAllowedOrigins("*").withSockJS();
     }
 
     @Bean
