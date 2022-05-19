@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin
+@RequestMapping(value = "/api")
 @RestController
 public class NotificationController {
 
@@ -93,9 +94,8 @@ public class NotificationController {
 //                target.getUsername()                    // username
 //        );
 
-        messagingTemplate.convertAndSendToUser(
-                toUser.getUsername(),
-                "/queue/notify",
+        messagingTemplate.convertAndSend(
+                toUser.getId() + "/queue/notify",
                 new Message(notification.getMessage())
         );
 
